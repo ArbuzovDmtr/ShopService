@@ -36,15 +36,15 @@ public class ProductRepo {
     public void addProduct(Product newProduct){
         ListOfProducts.add(newProduct);
     }
-    public void deleteProduct(int id){
+    public void removeProduct(int id){
         ListOfProducts.removeIf(product -> product.idOfProduct() == id);
 
     }
 
-    public  void deleteAllProducts(){
+    public  void removeProducts(){
         ListOfProducts.clear();
     }
-    public Product returnProduct(int id){
+    public Product getProduct(int id){
         for (Product product:ListOfProducts){
             if(product.idOfProduct()==id){
                 return product;
@@ -52,7 +52,7 @@ public class ProductRepo {
         return null;
     }
 
-    public List<Product> returnAllProducts(){
+    public List<Product> getProducts(){
         return ListOfProducts;
     }
 }
