@@ -1,19 +1,20 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-public class ShopService {
+public class ShopService  {
 
     private ProductRepo productRepo;
-    private OrderListRepo orderListRepo;
+    private OrderRepo orderRepo;
 
-    public ShopService(ProductRepo productRepo, OrderListRepo orderListRepo) {
+
+    public ShopService(ProductRepo productRepo, OrderRepo orderRepo) {
         this.productRepo = productRepo;
-        this.orderListRepo = orderListRepo;
+        this.orderRepo = orderRepo;
     }
 
     public ShopService() {
     }
+
+
 
     public ProductRepo getProductRepo() {
         return productRepo;
@@ -23,19 +24,19 @@ public class ShopService {
         this.productRepo = productRepo;
     }
 
-    public OrderListRepo getOrderListRepo() {
-        return orderListRepo;
+    public OrderRepo getOrderRepo() {
+        return orderRepo;
     }
 
-    public void setOrderListRepo(OrderListRepo orderListRepo) {
-        this.orderListRepo = orderListRepo;
+    public void setOrderListRepo(OrderRepo orderRepo) {
+        this.orderRepo = orderRepo;
     }
 
     @Override
     public String toString() {
         return "ShopService{" +
                 "productRepo=" + productRepo +
-                ", orderListRepo=" + orderListRepo +
+                ", orderListRepo=" + orderRepo +
                 '}';
     }
 
@@ -43,33 +44,34 @@ public class ShopService {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         ShopService that = (ShopService) o;
-        return Objects.equals(productRepo, that.productRepo) && Objects.equals(orderListRepo, that.orderListRepo);
+        return Objects.equals(productRepo, that.productRepo) && Objects.equals(orderRepo, that.orderRepo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productRepo, orderListRepo);
+        return Objects.hash(productRepo, orderRepo);
     }
 
 
-    public void newOrder(int OrderId, List<Integer> listOfProductsId){
-        List<Product> ListOfProductsByOrder= new ArrayList<>();
-        for(int id:listOfProductsId){
+    public void newOrder(int OrderId, Map<Integer, Integer> MapOfProductsIdAndQuantity){
+        Map<Product,Integer> MapOfProductsByOrder= new HashMap<>();
+        for(int id:MapOfProductsIdAndQuantity.keySet()){
             Product product= productRepo.getProduct(id);
             if (product==null){
                 System.out.println("Product with id "+id+"not found");
             }
             else {
-                ListOfProductsByOrder.add(product);
+                MapOfProductsByOrder.put(product,MapOfProductsIdAndQuantity.get(id));
 
             }
         }
-        if(!ListOfProductsByOrder.isEmpty()){
-            orderListRepo.addOrder(new Order(OrderId,ListOfProductsByOrder));
+        if(!MapOfProductsByOrder.isEmpty()){
+            orderRepo.addOrder(new Order(OrderId,MapOfProductsByOrder));
         }
         else{
             System.out.println("all Products are not available");
         }
     }
+
 
 }

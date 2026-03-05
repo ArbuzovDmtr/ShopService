@@ -1,6 +1,17 @@
-import java.util.List;
+import java.math.BigDecimal;
 
-public record Order(int id, List<Product> products) {
+import java.util.Map;
+
+public record Order(int id, Map <Product, Integer> products) {
+
+    public BigDecimal TotalSum(){
+        BigDecimal Sum = new BigDecimal(0);
+        for(Product product:products.keySet()){
+            Sum=Sum.add(product.priceOfProduct().multiply(new BigDecimal(products.get(product))));
+
+        }
+        return Sum;
+    }
 
 
 }
