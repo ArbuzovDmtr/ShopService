@@ -62,6 +62,6 @@ private List<Order> ListOfOrders= new ArrayList<>();
     }
 
     public List<Order> getOrders(){
-        return ListOfOrders;
+        return new ArrayList<>(ListOfOrders);
     }
 }
