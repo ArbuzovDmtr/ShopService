@@ -4,12 +4,17 @@ import java.util.Objects;
 
 public class OrderListRepo implements OrderRepo {
 
-private  final List<Order> ListOfOrders= new ArrayList<>();
+private List<Order> ListOfOrders= new ArrayList<>();
 
 
 
     public OrderListRepo() {
     }
+
+    public OrderListRepo(List<Order> listOfOrders) {
+        ListOfOrders = listOfOrders;
+    }
+
     public List<Order> getListOfOrders() {
         return new ArrayList<>(ListOfOrders);
     }
