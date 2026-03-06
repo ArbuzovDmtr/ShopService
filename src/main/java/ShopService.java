@@ -2,34 +2,19 @@ import java.util.*;
 
 public class ShopService  {
 
-    private ProductRepo productRepo;
-    private OrderRepo orderRepo;
+
+    private final ProductRepo productRepo;
+    private final OrderRepo orderRepo;
 
 
-    public ShopService(ProductRepo productRepo, OrderRepo orderRepo) {
-        this.productRepo = productRepo;
+    public ShopService(OrderRepo orderRepo,ProductRepo productRepo) {
+        this.productRepo=productRepo;
         this.orderRepo = orderRepo;
     }
 
-    public ShopService() {
-    }
-
-
-
-    public ProductRepo getProductRepo() {
-        return productRepo;
-    }
-
-    public void setProductRepo(ProductRepo productRepo) {
-        this.productRepo = productRepo;
-    }
 
     public OrderRepo getOrderRepo() {
         return orderRepo;
-    }
-
-    public void setOrderListRepo(OrderRepo orderRepo) {
-        this.orderRepo = orderRepo;
     }
 
     @Override
@@ -58,7 +43,7 @@ public class ShopService  {
         for(int id:MapOfProductsIdAndQuantity.keySet()){
             Product product= productRepo.getProduct(id);
             if (product==null){
-                System.out.println("Product with id "+id+"not found");
+                System.out.println("Product with id "+id+" not found");
             }
             else {
                 MapOfProductsByOrder.put(product,MapOfProductsIdAndQuantity.get(id));

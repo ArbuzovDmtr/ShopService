@@ -15,7 +15,7 @@ public class ProductRepo {
     }
 
     public List<Product> getListOfProducts() {
-        return ListOfProducts;
+        return new ArrayList<>(ListOfProducts);
     }
 
     public void setListOfProducts(List<Product> listOfProducts) {
@@ -52,7 +52,4 @@ public class ProductRepo {
         return null;
     }
 
-    public List<Product> getProducts(){
-        return ListOfProducts;
-    }
 }

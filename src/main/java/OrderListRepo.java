@@ -4,22 +4,17 @@ import java.util.Objects;
 
 public class OrderListRepo implements OrderRepo {
 
-private List<Order> ListOfOrders= new ArrayList<>();
+private  final List<Order> ListOfOrders= new ArrayList<>();
 
-    public OrderListRepo(List<Order> listOfOrders) {
-        ListOfOrders = listOfOrders;
-    }
+
 
     public OrderListRepo() {
     }
-
     public List<Order> getListOfOrders() {
-        return ListOfOrders;
+        return new ArrayList<>(ListOfOrders);
     }
 
-    public void setListOfOrders(List<Order> listOfOrders) {
-        ListOfOrders = listOfOrders;
-    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -36,8 +31,8 @@ private List<Order> ListOfOrders= new ArrayList<>();
     @Override
     public String toString() {
         return "OrderListRepo{" +
-                "ListOfOrders=" + ListOfOrders +
-                '}';
+                "ListOfOrders=" + '\n'+ListOfOrders +
+                '}'+'\n';
     }
 
 

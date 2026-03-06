@@ -1,7 +1,7 @@
-import java.math.BigDecimal;
+//import java.math.BigDecimal;
 
 
-public record Product(String nameOfProduct, BigDecimal priceOfProduct, int idOfProduct) {
+public record Product(String nameOfProduct, double priceOfProduct, int idOfProduct) {
 
 
 

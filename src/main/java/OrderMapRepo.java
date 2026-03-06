@@ -3,18 +3,13 @@ import java.util.*;
 public class OrderMapRepo implements OrderRepo{
     Map<Integer,Order> MapOfOrders= new HashMap<>();
 
-    public OrderMapRepo(Map<Integer, Order> mapOfOrders) {
-        MapOfOrders = mapOfOrders;
-    }
 
-    public OrderMapRepo() {
-    }
 
     @Override
     public String toString() {
         return "OrderMapRepo{" +
                 "MapOfOrders=" + MapOfOrders +
-                '}';
+                '}'+'\n';
     }
 
     @Override
