@@ -1,4 +1,52 @@
+public Map<Integer,Integer> ConsoleInputNewOrder(){
+
+    Map<Integer, Integer> MapOfCurrentOrder= new HashMap<>();
+    Scanner scanner = new Scanner(System.in);
+    String input;
+    IO.println("cucumber ID 1, tomato ID 2, paprika ID 3," + '\n' +
+            " cheese ID 4, bacon ID 5, chicken ID 6, coke ID 7 ");
+    while (true) {
+        IO.println("Enter \"+\" if you want add another product, if your Order is ready, enter Q: ");
+        input = scanner.next();
+        if ("+".equals(input)) {
+            IO.println("Enter product ID:");
+            int number1 = scanner.nextInt();
+            IO.println("Enter product quantity:");
+            int number2 = scanner.nextInt();
+            MapOfCurrentOrder.put(number1, number2);
+            IO.println("Your product is added in order");
+        } else if ("q".equalsIgnoreCase(input)) {
+            IO.println("Your Order is ready");
+            return MapOfCurrentOrder;
+
+        } else {
+            IO.println("Choose \"+\" or q");
+        }
+
+
+    }}
+
+public void ConsoleInterface(ShopService shopService){
+    Scanner scan = new Scanner(System.in);
+
+
+    while(true){
+        IO.println("Choose one option"+'\n'+"When you want make new Order enter 1 and 0 when you want end");
+        int nxt=scan.nextInt();
+        if(nxt==1){
+            Map<Integer,Integer> MapOfCurrentOrder= ConsoleInputNewOrder();
+            shopService.newOrder(MapOfCurrentOrder);
+
+        }
+        else if(nxt==0){
+            break;
+        }
+
+    }
+}
+
 void main() {
+
 
 
     OrderRepo newList = new OrderListRepo();
@@ -15,33 +63,12 @@ void main() {
     ShopService shop = new ShopService(newList, newRepOfProducts);
 
 
-    Map<Integer, Integer> MapOfCurrentOrder = new HashMap<>();
 
 
-    Scanner scanner = new Scanner(System.in);
-    String input;
-    IO.println("cucumber ID 1, tomato ID 2, paprika ID 3," + '\n' +
-            " cheese ID 4, bacon ID 5, chicken ID 6, coke ID 7 ");
+    ConsoleInterface(shop);
 
 
-    while (true) {
-        IO.println("Enter \"+\" if you want add another product, if your Order is ready, enter Q: ");
-        input = scanner.next();
-        if ("+".equals(input)) {
-            IO.println("Enter product ID:");
-            int number1 = scanner.nextInt();
-            IO.println("Enter product quantity:");
-            int number2 = scanner.nextInt();
-            MapOfCurrentOrder.put(number1, number2);
-        } else if ("q".equalsIgnoreCase(input)) {
-            IO.println("Your Order is ready");
-            break;
-        } else {
-            IO.println("Choose \"'+'\" or q");
-        }
 
-
-    }
 
 
 //        MapOfCurrentOrder.put(1,7);
@@ -49,7 +76,7 @@ void main() {
 //        MapOfCurrentOrder.put(4,12);
 //        totalSum =149.28
 
-    shop.newOrder(1, MapOfCurrentOrder);
+
     IO.println(shop.getOrderRepo());
     IO.println(shop.getOrderRepo().getOrderById(1).TotalSum());
 

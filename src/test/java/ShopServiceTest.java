@@ -21,7 +21,7 @@ class ShopServiceTest {
 
         Map<Integer,Integer>MOfOrders =new HashMap<>();
         MOfOrders.put(1,2);
-        shopService.newOrder(1,MOfOrders);
+        shopService.newOrder(MOfOrders);
 
         assertEquals(1,newRepOfOrders.getOrders().size());
 
@@ -39,7 +39,7 @@ class ShopServiceTest {
 
         Map<Integer,Integer>MOfOrders =new HashMap<>();
         MOfOrders.put(4,2);
-        shopService.newOrder(1,MOfOrders);
+        shopService.newOrder(MOfOrders);
 
         assertTrue(newRepOfOrders.getOrders().isEmpty());
 

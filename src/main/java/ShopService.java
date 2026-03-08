@@ -6,6 +6,9 @@ public class ShopService  {
     private final ProductRepo productRepo;
     private final OrderRepo orderRepo;
 
+    private int currentIdOrder=1;
+
+
 
     public ShopService(OrderRepo orderRepo,ProductRepo productRepo) {
         this.productRepo=productRepo;
@@ -38,20 +41,24 @@ public class ShopService  {
     }
 
 
-    public void newOrder(int OrderId, Map<Integer, Integer> MapOfProductsIdAndQuantity){
+    public void newOrder( Map<Integer, Integer> MapOfProductsIdAndQuantity){
         Map<Product,Integer> MapOfProductsByOrder= new HashMap<>();
         for(int id:MapOfProductsIdAndQuantity.keySet()){
             Product product= productRepo.getProduct(id);
             if (product==null){
-                System.out.println("Product with id "+id+" not found");
+                System.out.println("Product with id "+id+" in this moment not available");
             }
             else {
                 MapOfProductsByOrder.put(product,MapOfProductsIdAndQuantity.get(id));
 
+
             }
         }
         if(!MapOfProductsByOrder.isEmpty()){
-            orderRepo.addOrder(new Order(OrderId,MapOfProductsByOrder));
+            orderRepo.addOrder(new Order(currentIdOrder,MapOfProductsByOrder));
+            System.out.println("Your Order ID is "+currentIdOrder);
+            currentIdOrder++;
+
         }
         else{
             System.out.println("all Products are not available");
