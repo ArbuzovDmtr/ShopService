@@ -5,12 +5,7 @@ public class OrderMapRepo implements OrderRepo{
 
 
 
-    @Override
-    public String toString() {
-        return "OrderMapRepo{" +
-                "MapOfOrders=" + MapOfOrders +
-                '}'+'\n';
-    }
+    
 
     @Override
     public boolean equals(Object o) {

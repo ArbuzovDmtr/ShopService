@@ -32,12 +32,8 @@ private List<Order> ListOfOrders= new ArrayList<>();
         return Objects.hashCode(ListOfOrders);
     }
 
-    @Override
-    public String toString() {
-        return "OrderListRepo{" +
-                "ListOfOrders=" + '\n'+ListOfOrders +
-                '}'+'\n';
-    }
+
+
 
 
     public void addOrder(Order order){

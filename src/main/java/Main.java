@@ -77,7 +77,7 @@ void main() {
 //        totalSum =149.28
 
 
-    IO.println(shop.getOrderRepo());
+    IO.println(shop.getOrderRepo().getOrderById(1));
     IO.println(shop.getOrderRepo().getOrderById(1).TotalSum());
 
 

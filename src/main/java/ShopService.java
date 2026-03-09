@@ -43,15 +43,17 @@ public class ShopService  {
 
     public void newOrder( Map<Integer, Integer> MapOfProductsIdAndQuantity){
         Map<Product,Integer> MapOfProductsByOrder= new HashMap<>();
-        for(int id:MapOfProductsIdAndQuantity.keySet()){
-            Product product= productRepo.getProduct(id);
-            if (product==null){
-                System.out.println("Product with id "+id+" in this moment not available");
-            }
-            else {
-                MapOfProductsByOrder.put(product,MapOfProductsIdAndQuantity.get(id));
+        for (Map.Entry<Integer,Integer> entry : MapOfProductsIdAndQuantity.entrySet()) {
 
+            int id = entry.getKey();
+            int quantity = entry.getValue();
 
+            Product product = productRepo.getProductById(id);
+
+            if (product == null) {
+                System.out.println("Product with id " + id + " not available");
+            } else {
+                MapOfProductsByOrder.put(product, quantity);
             }
         }
         if(!MapOfProductsByOrder.isEmpty()){

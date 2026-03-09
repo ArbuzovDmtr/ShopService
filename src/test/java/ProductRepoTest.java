@@ -44,7 +44,7 @@ class ProductRepoTest {
         repo.addProduct(product);
         repo.addProduct(product2);
 
-        assertEquals(product, repo.getProduct(1));
+        assertEquals(product, repo.getProductById(1));
     }
 
 

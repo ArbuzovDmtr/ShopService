@@ -7,12 +7,11 @@ public record Order(int id, Map <Product, Integer> products) {
 
 
     public double TotalSum(){
-        double Sum = 0;
-        for(Product product:products.keySet()){
-            Sum+=product.priceOfProduct()*(products.get(product));
-
+        double sum = 0;
+        for (Map.Entry<Product,Integer> entry : products.entrySet()) {
+            sum += entry.getKey().priceOfProduct() * entry.getValue();
         }
-        return Sum;
+        return sum;
     }
 
 

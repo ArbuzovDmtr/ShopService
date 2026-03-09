@@ -45,12 +45,13 @@ public class ProductRepo {
     }
 
 
-    public Product getProduct(int id){
+    public Product getProductById(int id){
         for (Product product:ListOfProducts){
             if(product.idOfProduct()==id){
                 return product;
             }}
         return null;
     }
+
 
 }
