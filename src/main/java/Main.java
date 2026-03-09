@@ -71,10 +71,6 @@ void main() {
 
 
 
-//        MapOfCurrentOrder.put(1,7);
-//        MapOfCurrentOrder.put(7,6);
-//        MapOfCurrentOrder.put(4,12);
-//        totalSum =149.28
 
 
     IO.println(shop.getOrderRepo().getOrderById(1));
